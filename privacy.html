@@ -1,24 +1,23 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fcfcfd"><meta name="description" content="Как SmartSwitcher защищает ваши данные: обработка только в памяти, набранный текст не уходит в сеть, поля паролей игнорируются.">
+  <meta name="theme-color" content="#101115">
+  <meta name="description" content="Как SmartSwitcher защищает ваши данные: обработка только в памяти, набранный текст не уходит в сеть, поля паролей игнорируются.">
   <title>Приватность — SmartSwitcher</title>
-  <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem('ss-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
-<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></symbol>
-<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+<symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
 </defs></svg>
-<header class="header"><div class="nav-wrap">
-  <a class="brand" href="index.html" aria-label="SmartSwitcher — на главную"><span class="app-icon small">Аа<span>↔</span></span><span>SmartSwitcher</span></a>
-  <nav aria-label="Основная навигация"><a href="index.html#features">Возможности</a><a href="index.html#privacy">Приватность</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Версии</a></nav>
-  <div class="nav-actions"><button class="theme-toggle icon-button" aria-label="Сменить тему" title="Сменить тему"><svg class="icon moon"><use href="#i-moon"/></svg><svg class="icon sun"><use href="#i-sun"/></svg></button><a class="button small-button" href="https://github.com/SeregaProt/SmartSwitcher-releases/releases/latest/download/SmartSwitcher.dmg">Скачать<span class="download-arrow">↓</span></a></div>
-</div></header>
+<header>
+  <a href="index.html" class="brand" aria-label="SmartSwitcher — на главную"><span class="logo" aria-hidden="true">Aa</span>SmartSwitcher</a>
+  <nav style="display:flex"><a href="index.html">На главную</a></nav>
+</header>
 <main class="doc">
-  <span class="section-kicker">ПРИВАТНОСТЬ ПО УМОЛЧАНИЮ</span>
+  <div class="eyebrow">ПРИВАТНОСТЬ ПО УМОЛЧАНИЮ</div>
   <h1>Приватность — это не опция, а архитектура</h1>
   <p class="lead">SmartSwitcher спроектирован по принципу privacy-by-design. Вот что это значит на практике.</p>
 
@@ -40,18 +39,11 @@
   <p>Все основные функции работают полностью офлайн.</p>
 
   <h2>Дневник исправлений</h2>
-  <div class="note-card"><p>Опциональный дневник <strong>выключен по умолчанию</strong>. При включении он хранится только локально, в зашифрованном виде (AES-GCM, ключ в Keychain), и очищается одной кнопкой.</p></div>
+  <div class="note"><p>Опциональный дневник <strong>выключен по умолчанию</strong>. При включении он хранится только локально, в зашифрованном виде (AES-GCM, ключ в Keychain), и очищается одной кнопкой.</p></div>
 
   <h2>Подлинность</h2>
   <p>Каждая версия подписана сертификатом разработчика Apple (Developer ID) и проверена Apple (нотаризация): macOS гарантирует, что приложение не изменено после выпуска.</p>
 </main>
-<footer><div class="footer-inner"><a href="index.html" class="brand"><span class="app-icon small">Аа<span>↔</span></span><span>SmartSwitcher</span></a><span class="copyright">© 2026 SmartSwitcher</span><div class="footer-links"><a href="index.html">На главную</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Все версии</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/issues">Связаться</a></div></div></footer>
-<script>
-document.querySelector('.theme-toggle').addEventListener('click', () => {
-  const root = document.documentElement;
-  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
-  try { localStorage.setItem('ss-theme', root.dataset.theme); } catch {}
-});
-</script>
+<footer><a class="brand" href="index.html">SmartSwitcher</a><span>© 2026 SmartSwitcher</span><div><a href="index.html">На главную</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Все версии</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/issues">Связаться <svg class="i"><use href="#arrow-up-right"/></svg></a></div></footer>
 </body>
 </html>

@@ -1,81 +1,91 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="light">
+<html lang="ru">
 <head>
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#fafafa"><meta name="description" content="SmartSwitcher исправляет текст, набранный в неверной раскладке. Нативно для macOS. Бесплатно, приватно и без телеметрии.">
-  <title>SmartSwitcher — печатайте, не глядя на раскладку</title>
-  <link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css">
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem('ss-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}</script>
+  <meta name="theme-color" content="#101115">
+  <meta name="description" content="SmartSwitcher исправляет текст, набранный в неверной раскладке: ghbdtn → привет. Нативно для macOS, бесплатно, без телеметрии.">
+  <meta property="og:title" content="SmartSwitcher — вы пишете, он понимает">
+  <meta property="og:description" content="Неверная раскладка больше не прерывает мысль. Бесплатно для macOS 13+.">
+  <meta property="og:url" content="https://smartswitcher.app/">
+  <title>SmartSwitcher — вы пишете, он понимает</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/inter-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
-<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
-<symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
-<symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 5v2"/></symbol>
-<symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 3 8 3v6c0 5-8 9-8 9S4 17 4 12V6l8-3Z"/><path d="m8 12 3 3 5-6"/></symbol>
-<symbol id="i-bolt" viewBox="0 0 24 24"><path d="m13 2-9 12h7l-1 8 10-13h-8l1-7Z"/></symbol>
-<symbol id="i-keyboard" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M6 9h.01M10 9h.01M14 9h.01M18 9h.01M6 12h.01M10 12h.01M14 12h.01M18 12h.01M7 15h10"/></symbol>
-<symbol id="i-scan" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m13-5h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3M7 12h10m-5-5v10"/></symbol>
-<symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 8h16m-4-4 4 4-4 4M20 16H4m4-4-4 4 4 4"/></symbol>
-<symbol id="i-sliders" viewBox="0 0 24 24"><path d="M4 7h6m4 0h6M4 17h10m4 0h2"/><circle cx="12" cy="7" r="2"/><circle cx="16" cy="17" r="2"/></symbol>
-<symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 4v16h17M9 15v-4m5 4V7m5 8v-6"/></symbol>
-<symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 13A8.5 8.5 0 0 1 11 3.5 8.5 8.5 0 1 0 20.5 13Z"/></symbol>
-<symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
-<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 8a8 8 0 1 0 .4 7M20 3v5h-5"/></symbol>
-<symbol id="i-apple" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M17.1 12.7c0-2 1.6-3 1.7-3.1-1-1.5-2.6-1.7-3.2-1.7-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.8.9-3.5 2.1-1.5 2.6-.4 6.5 1 8.6.7 1 1.5 2.1 2.6 2 1-.1 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2 .8-1.2 1.2-2.4 1.2-2.5-.1 0-2.1-.8-2.1-3.4ZM15 6.5c.6-.8 1.1-1.8 1-2.9-.9 0-2.1.6-2.7 1.3-.6.6-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.1Z"/></symbol>
-<symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
-<symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
-<symbol id="i-wifi" viewBox="0 0 24 24"><path d="M3 8a14 14 0 0 1 18 0M6 12a9 9 0 0 1 12 0m-9 4a4 4 0 0 1 6 0m-3 4h.01"/></symbol>
+<symbol id="apple" viewBox="0 0 24 24"><path d="M17.1 12.7c0-2 1.6-3 1.7-3.1-1-1.5-2.6-1.7-3.2-1.7-1.3-.1-2.5.8-3.2.8-.6 0-1.6-.8-2.7-.8-1.4 0-2.8.9-3.5 2.1-1.5 2.6-.4 6.5 1 8.6.7 1 1.5 2.1 2.6 2 1-.1 1.5-.7 2.8-.7s1.7.7 2.8.7c1.2 0 1.9-1 2.6-2 .8-1.200 1.2-2.4 1.2-2.5-.1 0-2.1-.8-2.1-3.4ZM15 6.5c.6-.8 1.1-1.8 1-2.9-.9 0-2.1.6-2.7 1.3-.6.6-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.1Z"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+<symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+<symbol id="shield" viewBox="0 0 24 24"><path d="M12 3 4.5 5.8v5.7c0 4.8 3.3 8 7.5 9.5 4.2-1.5 7.5-4.7 7.5-9.5V5.8L12 3Z"/><path d="m8.7 12 2.3 2.3 4.4-4.6"/></symbol>
+<symbol id="bolt" viewBox="0 0 24 24"><path d="m14 2.5-9 11.5h7l-2 7.5 9-11.5h-7l2-7.5Z"/></symbol>
+<symbol id="keyboard" viewBox="0 0 24 24"><rect x="2.5" y="5.5" width="19" height="13" rx="2"/><path d="M6 9.5h.01M9.5 9.5h.01M13 9.5h.01M16.5 9.5h.01M6 12.5h.01M18 12.5h.01M9.5 12.5h5M7.5 15.5h9"/></symbol>
+<symbol id="command" viewBox="0 0 24 24"><path d="M9 9V6.5A2.5 2.5 0 1 0 6.5 9H9Zm0 0h6m-6 0v6m6-6V6.5A2.5 2.5 0 1 1 17.5 9H15Zm0 0v6m0 0h-6m6 0v2.5a2.5 2.5 0 1 0 2.5-2.5H15Zm-6 0H6.5A2.5 2.5 0 1 0 9 17.5V15Z"/></symbol>
+<symbol id="undo" viewBox="0 0 24 24"><path d="M4 5v5h5"/><path d="M4.6 14.5A8 8 0 1 0 6.3 6.3L4 10"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
+<symbol id="wifi" viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.3a9.5 9.5 0 0 1 13 0M8.6 15.5a5 5 0 0 1 6.8 0M12 19h.01"/></symbol>
+<symbol id="battery" viewBox="0 0 24 24"><rect x="2.5" y="7.5" width="17" height="9" rx="2"/><path d="M22 11v2M5.5 10.5v3h9v-3h-9Z"/></symbol>
+<symbol id="list" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
 </defs></svg>
-<header class="header"><div class="nav-wrap">
-  <a class="brand" href="#" aria-label="SmartSwitcher — в начало"><span class="app-icon small">Аа<span>↔</span></span><span>SmartSwitcher</span></a>
-  <nav aria-label="Основная навигация"><a href="#features">Возможности</a><a href="#privacy">Приватность</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Версии</a></nav>
-  <div class="nav-actions"><button class="theme-toggle icon-button" aria-label="Включить тёмную тему" title="Сменить тему"><svg class="icon moon"><use href="#i-moon"/></svg><svg class="icon sun"><use href="#i-sun"/></svg></button><a class="button small-button" href="https://github.com/SeregaProt/SmartSwitcher-releases/releases/latest/download/SmartSwitcher.dmg">Скачать<span class="download-arrow">↓</span></a></div>
-</div></header>
-<main>
-<section class="hero" aria-labelledby="hero-title">
-  <div class="hero-copy"><div class="eyebrow"><span class="status-dot"></span> Маленькая утилита. Большая разница.</div>
-  <h1 id="hero-title">Печатайте,<br>не глядя на <span>раскладку</span></h1>
-  <p class="hero-description">SmartSwitcher замечает текст, набранный в неверной раскладке,<br class="desktop-break"> и мгновенно исправляет его. Нативно для Apple Silicon и Intel. Бесплатно.</p>
-  <div class="hero-actions"><a class="button primary" href="https://github.com/SeregaProt/SmartSwitcher-releases/releases/latest/download/SmartSwitcher.dmg"><svg class="icon apple"><use href="#i-apple"/></svg>Скачать для macOS</a><a class="quiet-link" href="#privacy">Почему это приватно <svg class="icon"><use href="#i-arrow"/></svg></a></div>
-  <p class="trust"><svg class="icon"><use href="#i-shield"/></svg>macOS 13+ <span>·</span> подписано и проверено Apple <span>·</span> без телеметрии</p></div>
-  <div class="hero-demo">
-    <div class="desktop-bar"><div class="desktop-bar-left"><svg class="icon"><use href="#i-apple"/></svg><b>Заметки</b><span>Файл</span><span>Правка</span><span>Вид</span></div><div class="desktop-bar-right"><span class="menu-app">Аа</span><span class="layout-code">RU</span><svg class="icon"><use href="#i-wifi"/></svg><span class="battery"></span><b>Пн 9:41</b></div></div>
-    <div class="notes-window"><aside class="notes-sidebar"><div class="traffic-lights"><i></i><i></i><i></i></div><div class="notes-folder">Заметки <span>3</span></div><div class="note-preview active"><b>Хорошая мысль не ждёт.</b><span>09:41 &nbsp; Просто начните писать...</span></div><div class="note-preview"><b>Идеи на потом</b><span>Вчера &nbsp; И чуть-чуть вдохновения</span></div><div class="note-preview"><b>Планы на неделю</b><span>Вчера &nbsp; Оставить время для себя</span></div></aside>
-    <div class="notes-main"><div class="notes-toolbar"><svg class="icon"><use href="#i-sliders"/></svg><span>Аа</span><svg class="icon"><use href="#i-scan"/></svg></div><div class="note-date">Сегодня в 09:41</div><div class="note-content"><h3>Хорошая мысль не ждёт.</h3><p>И не должна зависеть от раскладки.</p><div class="typing-area"><input id="demo-input" type="text" value="ghbdtn" aria-label="Попробуйте набрать ghbdtn" spellcheck="false" autocomplete="off" autocapitalize="off"><span class="demo-hud"><span class="hud-app">Аа</span><span id="hud-from">EN</span><svg class="icon"><use href="#i-arrow"/></svg><span id="hud-to">RU</span><span class="hud-check"><svg class="icon"><use href="#i-check"/></svg></span></span></div><span class="input-hint">Попробуйте напечатать здесь</span></div></div></div>
-    <div class="demo-caption"><span><span class="status-dot"></span><span id="demo-status" aria-live="polite">SmartSwitcher замечает неверную раскладку</span></span><button id="replay" class="replay" aria-label="Повторить анимацию"><svg class="icon"><use href="#i-refresh"/></svg>Ещё раз</button></div>
+<a class="skip" href="#main">Перейти к содержимому</a>
+<header>
+  <a href="#" class="brand" aria-label="SmartSwitcher — в начало"><span class="logo" aria-hidden="true">Aa</span>SmartSwitcher</a>
+  <nav id="nav"><a href="#features">Возможности</a><a href="#privacy">Приватность</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Версии <svg class="i"><use href="#arrow-up-right"/></svg></a></nav>
+  <button class="menu" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav"><svg class="i open"><use href="#list"/></svg><svg class="i close"><use href="#x"/></svg></button>
+</header>
+<main id="main">
+<section class="hero">
+  <h1>Вы пишете.<br>Он понимает.</h1>
+  <p class="lead">Неверная раскладка больше не прерывает мысль.</p>
+  <a class="download" href="https://github.com/SeregaProt/SmartSwitcher-releases/releases/latest/download/SmartSwitcher.dmg"><svg class="i fill"><use href="#apple"/></svg>Скачать для macOS</a>
+  <p class="meta">Бесплатно · macOS 13+ · версия 0.4.2</p>
+  <div class="demo">
+    <div class="menubar"><div><svg class="i fill"><use href="#apple"/></svg><b>Заметки</b><span>Файл</span><span>Правка</span><span>Вид</span></div><div><span class="app">Aa</span><span id="menubar-layout">RU</span><svg class="i"><use href="#wifi"/></svg><svg class="i"><use href="#battery"/></svg><span>9:41</span></div></div>
+    <div class="editor">
+      <div class="conversion"><input id="demo-input" value="ghbdtn" maxlength="22" aria-label="Текст в неверной раскладке" spellcheck="false" autocomplete="off" autocapitalize="off"><svg class="i convert-arrow"><use href="#arrow"/></svg><output id="demo-output" aria-live="polite"><span id="demo-result">привет</span><span class="caret"></span></output></div>
+      <div class="language"><span id="lang-from">EN</span><svg class="i"><use href="#arrow"/></svg><strong id="lang-to">RU</strong><svg class="i"><use href="#check"/></svg></div>
+    </div>
+    <img class="keyboard" src="assets/keyboard.jpg" alt="" width="1600" height="667">
+    <div class="demo-tools"><span>Попробуйте:</span><button data-example="0" aria-pressed="true">ghbdtn</button><button data-example="1" aria-pressed="false">руддщ</button><button data-example="2" aria-pressed="false">heccrbq</button><button class="undo" id="undo" aria-label="Отменить исправление (в приложении — двойной Shift)" title="Отменить исправление — в приложении это двойной Shift"><svg class="i"><use href="#undo"/></svg></button></div>
   </div>
-  <div class="hero-footnote">Вы думаете о смысле. <span>Мы — о раскладке.</span></div>
+  <div class="proof"><span>Работает на вашем Mac</span><span>Без телеметрии</span><span>Отмена двойным Shift</span></div>
 </section>
-<section class="how section-wrap" id="how"><div class="section-heading"><span class="section-kicker">КАК ЭТО РАБОТАЕТ</span><h2>Всё происходит само.</h2><p>Без паузы. Без лишнего движения. Без потери мысли.</p></div>
-  <div class="steps"><article><span class="step-number">01</span><svg class="icon step-icon"><use href="#i-keyboard"/></svg><h3>Печатаете как обычно</h3><p>В любимом редакторе, мессенджере <br>или рабочем документе.</p></article><span class="step-arrow">→</span><article><span class="step-number">02</span><svg class="icon step-icon"><use href="#i-scan"/></svg><h3>SmartSwitcher распознаёт <br>неверную раскладку</h3><p>Понимает слово, пока вы пишете.</p></article><span class="step-arrow">→</span><article><span class="step-number">03</span><svg class="icon step-icon"><use href="#i-check"/></svg><h3>Слово исправлено, <br>раскладка переключена</h3><p>Продолжайте с того же места.</p></article></div>
-  <div class="example-strip"><button data-example="ghbdtn"><code>ghbdtn</code><span>→</span><code>привет</code></button><i></i><button data-example="heccrbq"><code>heccrbq</code><span>→</span><code>русский</code></button><i></i><button data-example="руддщ"><code>руддщ</code><span>→</span><code>hello</code></button></div>
-</section>
-<section class="features section-wrap" id="features"><div class="section-heading"><span class="section-kicker">ПРОДУМАН ДО МЕЛОЧЕЙ</span><h2>Незаметный. Пока не нужен.</h2><p>Всё, что нужно для правильных слов. И ничего сверх этого.</p></div>
-  <div class="bento">
-  <article class="feature-card detector"><div class="feature-label"><svg class="icon"><use href="#i-scan"/></svg>Точный детектор</div><h3>Понимает слова.<br>Уважает исключения.</h3><p>Словари и статистическая модель языка.<br>Имена, команды, URL и пароли не трогаются.</p><div class="detect-visual"><span class="detected-word">ghbdtn</span><svg class="icon"><use href="#i-arrow"/></svg><span class="correct-word">привет <svg class="icon"><use href="#i-check"/></svg></span></div><div class="card-foot"><span class="status-dot"></span>Меньше 0,3% ложных срабатываний</div></article>
-  <article class="feature-card private-card"><div class="feature-label"><svg class="icon"><use href="#i-shield"/></svg>Честная приватность</div><h3>Ваши слова.<br>Только на вашем Mac.</h3><p>Текст обрабатывается только в памяти.<br>Ноль сетевой передачи. Поля паролей игнорируются.</p><div class="privacy-orbit"><div><svg class="icon"><use href="#i-lock"/></svg></div><span class="orbit-dot one"></span><span class="orbit-dot two"></span></div></article>
-  <article class="feature-card speed-card"><div class="feature-label"><svg class="icon"><use href="#i-bolt"/></svg>Нативно и быстро</div><div class="speed-value">0,01<span> мс</span></div><h3>Быстрее следующей буквы.</h3><p>Анализ одного слова. Написан на Swift для Apple Silicon и Intel. Без задержки ввода.</p><div class="chip"><svg class="icon"><use href="#i-apple"/></svg>Создан для macOS</div></article>
-  <article class="feature-card manual-card"><div class="feature-label"><svg class="icon"><use href="#i-keyboard"/></svg>Ручной контроль</div><div class="shift-keys"><kbd>⇧<span>shift</span></kbd><kbd>⇧<span>shift</span></kbd></div><h3>Последнее слово за вами.</h3><p>Двойной Shift исправляет и откатывает замену. SmartSwitcher запоминает ваш откат.</p></article>
-  <article class="feature-card replace-card"><div class="feature-label"><svg class="icon"><use href="#i-swap"/></svg>Автозамена</div><div class="replacement"><span>спс</span><svg class="icon"><use href="#i-arrow"/></svg><b>спасибо</b></div><h3>Меньше букв. Больше смысла.</h3><p>Свои сокращения и горячие клавиши для выделенного текста: раскладка, регистр, транслит.</p></article>
-  <article class="feature-card language-card"><div class="language-keys"><span>А</span><svg class="icon"><use href="#i-swap"/></svg><span>A</span></div><div><div class="feature-label">RU / EN и далее</div><h3>На двух языках. В одном ритме.</h3><p>Русская и английская раскладки. Интерфейс на двух языках.</p></div><span class="language-note">Одинаково естественно</span></article>
+
+<section class="section features" id="features">
+  <div class="eyebrow">МЕНЬШЕ ЛИШНИХ ДВИЖЕНИЙ</div>
+  <div class="section-head"><h2>В нужной раскладке.<br><span>В вашем ритме.</span></h2><p>Маленькая утилита в строке меню.<br>Большая разница в каждом рабочем дне.</p></div>
+  <div class="feature-grid">
+    <article><svg class="i"><use href="#bolt"/></svg><h3>Исправляет на лету</h3><p>Распознаёт неверную раскладку, меняет слово и переключает язык. Имена, команды, адреса сайтов и пароли не трогает.</p><div class="sample">ghbdtn <svg class="i"><use href="#arrow"/></svg> <strong>привет</strong></div></article>
+    <article><svg class="i"><use href="#keyboard"/></svg><h3>Последнее слово за вами</h3><p>Двойной Shift исправляет слово или отменяет замену. SmartSwitcher запоминает откат и больше это слово не трогает.</p><div class="sample keys"><kbd>⇧ Shift</kbd><kbd>⇧ Shift</kbd></div></article>
+    <article><svg class="i"><use href="#command"/></svg><h3>Меньше букв. Больше смысла.</h3><p>Свои сокращения и горячие клавиши для выделенного текста: раскладка, регистр, транслитерация.</p><div class="sample">спс <svg class="i"><use href="#arrow"/></svg> <strong>спасибо</strong></div></article>
   </div>
 </section>
-<section class="privacy-section" id="privacy"><div class="privacy-inner"><div class="privacy-heading"><span class="large-lock"><svg class="icon"><use href="#i-lock"/></svg></span><span class="section-kicker">ПРИВАТНОСТЬ ПО УМОЛЧАНИЮ</span><h2>Остаётся между<br>вами и вашим Mac.</h2><p>Ваш текст никогда не покидает Mac.</p></div><div class="privacy-promises"><article><svg class="icon"><use href="#i-check"/></svg><div><h3>Текст не уходит в сеть</h3><p>Распознавание целиком на устройстве. В сеть — только проверка обновлений.</p></div></article><article><svg class="icon"><use href="#i-check"/></svg><div><h3>Без телеметрии</h3><p>Никакой аналитики и сбора данных.</p></div></article><article><svg class="icon"><use href="#i-check"/></svg><div><h3>Пароли не видим</h3><p>Защищённые поля ввода игнорируются.</p></div></article><a class="quiet-link" href="privacy.html">Политика приватности <svg class="icon"><use href="#i-arrow"/></svg></a></div></div></section>
-<section class="settings-section section-wrap" id="settings"><div class="section-heading"><span class="section-kicker">ПО-МАКОВСКИ ПРОСТО</span><h2>Всё под рукой.<br>И всё на своём месте.</h2><p>Живёт в строке меню. Настраивается под вас.</p></div>
-  <div class="settings-stage"><div class="settings-window"><aside class="settings-sidebar"><div class="traffic-lights"><i></i><i></i><i></i></div><div class="settings-brand"><span class="app-icon small">Аа<span>↔</span></span><b>SmartSwitcher</b><small>Версия 0.4.2</small></div><div class="settings-tabs" role="tablist" aria-label="Разделы настроек" aria-orientation="vertical"><button class="active" role="tab" id="tab-general" aria-controls="settings-panel" aria-selected="true" data-tab="general"><svg class="icon"><use href="#i-sliders"/></svg>Общие</button><button role="tab" id="tab-exclusions" aria-controls="settings-panel" aria-selected="false" data-tab="exclusions"><svg class="icon"><use href="#i-shield"/></svg>Приложения</button><button role="tab" id="tab-replacements" aria-controls="settings-panel" aria-selected="false" data-tab="replacements"><svg class="icon"><use href="#i-swap"/></svg>Автозамена</button><button role="tab" id="tab-shortcuts" aria-controls="settings-panel" aria-selected="false" data-tab="shortcuts"><svg class="icon"><use href="#i-keyboard"/></svg>Хоткеи</button><button role="tab" id="tab-statistics" aria-controls="settings-panel" aria-selected="false" data-tab="statistics"><svg class="icon"><use href="#i-chart"/></svg>Статистика</button></div></aside><div class="settings-panel" id="settings-panel" role="tabpanel" aria-labelledby="tab-general"></div></div>
-    <div class="menubar-preview"><div class="mini-menubar"><button id="menu-toggle" class="selected" aria-expanded="true" aria-controls="app-menu" aria-label="Показать или скрыть меню SmartSwitcher">Аа</button><svg class="icon"><use href="#i-wifi"/></svg><span class="battery"></span><span>9:41</span></div><div class="app-menu" id="app-menu"><div class="menu-title"><span class="status-dot"></span><b>SmartSwitcher работает</b></div><div class="menu-separator"></div><div class="menu-muted">Раскладка: Русская</div><div class="menu-separator"></div><button id="pause-app"><span>Пауза</span></button><button id="pause-10"><span>Приостановить на 10 минут</span></button><div class="menu-separator"></div><button id="show-settings"><span>Настройки…</span><span class="shortcut">⌘ ,</span></button><button id="check-updates"><span>Проверить обновления…</span></button></div></div>
-  </div><p class="settings-caption"><svg class="icon"><use href="#i-sliders"/></svg>Попробуйте переключить вкладки и настроить под себя.</p>
+
+<section class="privacy section" id="privacy">
+  <div class="privacy-title"><svg class="i"><use href="#shield"/></svg><div class="eyebrow">ПРИВАТНОСТЬ ПО УМОЛЧАНИЮ</div><h2>Ваш текст.<br>Только ваш Mac.</h2><p>То, что вы пишете, остаётся вашим.</p><a href="privacy.html" class="text-link">Политика приватности <svg class="i"><use href="#arrow-up-right"/></svg></a></div>
+  <div class="privacy-list">
+    <article><span>01</span><div><h3>Обработка на устройстве</h3><p>Распознавание работает локально, текст живёт только в памяти. В сеть уходит лишь проверка обновлений.</p></div></article>
+    <article><span>02</span><div><h3>Без телеметрии</h3><p>Никакой аналитики и сбора данных о том, что вы печатаете.</p></div></article>
+    <article><span>03</span><div><h3>Пароли остаются паролями</h3><p>Защищённые поля ввода игнорируются, менеджеры паролей исключены по умолчанию.</p></div></article>
+  </div>
 </section>
-<section class="faq section-wrap" id="faq"><div class="section-heading"><span class="section-kicker">ХОРОШИЙ ВОПРОС</span><h2>Ещё пара деталей.</h2></div><div class="faq-list">
-<details><summary>Это действительно бесплатно?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>Да. Сейчас все возможности SmartSwitcher бесплатны — без регистрации, рекламы и пробного периода.</p></details>
-<details><summary>Зачем нужен доступ к «Универсальному доступу»?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>Он позволяет SmartSwitcher распознавать введённое слово и заменять его в других приложениях. Доступ включается в «Системных настройках» → «Конфиденциальность и безопасность» → «Универсальный доступ». Обработка текста остаётся на вашем Mac.</p></details>
-<details><summary>Работает ли SmartSwitcher в полях паролей?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>Нет. Защищённые поля паролей игнорируются: SmartSwitcher не анализирует и не исправляет текст в них.</p></details>
-<details><summary>Какие версии macOS поддерживаются?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>macOS 13 Ventura и новее. Приложение работает нативно на Mac с Apple Silicon и процессорами Intel.</p></details>
-<details><summary>Как удалить приложение?<svg class="icon"><use href="#i-chevron"/></svg></summary><p>Завершите SmartSwitcher через его меню в строке меню, затем переместите приложение из папки «Программы» в Корзину. Разрешение можно отключить в разделе «Универсальный доступ» системных настроек.</p></details>
-</div></section>
-<section class="final-cta"><span class="app-icon large">Аа<span>↔</span></span><h2>Попробуйте —<br>это бесплатно.</h2><p>Меньше исправлять. Больше успевать.</p><a class="button primary" href="https://github.com/SeregaProt/SmartSwitcher-releases/releases/latest/download/SmartSwitcher.dmg"><svg class="icon apple"><use href="#i-apple"/></svg>Скачать для macOS</a><span class="version-note">Версия 0.4.2 <span>·</span> ~2 МБ <span>·</span> macOS 13+</span></section>
+
+<section class="section faq">
+  <div><div class="eyebrow">ПЕРЕД ПЕРВЫМ «ПРИВЕТ»</div><h2>Хорошие<br>вопросы.</h2></div>
+  <div>
+    <details><summary>Это действительно бесплатно?<svg class="i"><use href="#plus"/></svg></summary><p>Да. Сейчас все возможности SmartSwitcher бесплатны — без регистрации и рекламы.</p></details>
+    <details><summary>Какие Mac поддерживаются?<svg class="i"><use href="#plus"/></svg></summary><p>Mac с Apple Silicon и Intel на macOS 13 Ventura и новее. Приложение подписано и нотаризовано Apple.</p></details>
+    <details><summary>Зачем нужен «Универсальный доступ»?<svg class="i"><use href="#plus"/></svg></summary><p>Без него приложение не видит нажатия клавиш и не может заменить слово в других программах. При первом запуске мастер подскажет, где включить разрешение; отключить его можно в «Системных настройках» → «Конфиденциальность и безопасность».</p></details>
+    <details><summary>Можно отменить исправление?<svg class="i"><use href="#plus"/></svg></summary><p>Да. Нажмите Shift дважды — SmartSwitcher вернёт исходный текст и запомнит ваш откат.</p></details>
+    <details><summary>Можно выключить его в отдельных приложениях?<svg class="i"><use href="#plus"/></svg></summary><p>Да. Для каждого приложения можно выбрать режим: автоматически, только вручную (двойным Shift) или выключено. Пауза на 10 минут — в меню в строке меню.</p></details>
+  </div>
+</section>
+
+<section class="closing"><span class="logo" aria-hidden="true">Aa</span><h2>Мысль важнее раскладки.</h2><p>Остальное возьмёт на себя SmartSwitcher.</p><a class="download" href="https://github.com/SeregaProt/SmartSwitcher-releases/releases/latest/download/SmartSwitcher.dmg"><svg class="i fill"><use href="#apple"/></svg>Скачать для macOS</a><span class="meta">Версия 0.4.2 · Apple Silicon и Intel · macOS 13+</span></section>
 </main>
-<footer><div class="footer-inner"><a href="#" class="brand"><span class="app-icon small">Аа<span>↔</span></span><span>SmartSwitcher</span></a><span class="copyright">© 2026 SmartSwitcher</span><div class="footer-links"><a href="privacy.html">Приватность</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Все версии</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/issues">Связаться</a></div></div></footer>
+<footer><a class="brand" href="#">SmartSwitcher</a><span>© 2026 SmartSwitcher</span><div><a href="privacy.html">Приватность</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/releases">Все версии</a><a href="https://github.com/SeregaProt/SmartSwitcher-releases/issues">Связаться <svg class="i"><use href="#arrow-up-right"/></svg></a></div></footer>
 <script src="app.js"></script>
-</body></html>
+</body>
+</html>
